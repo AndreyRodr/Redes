@@ -1,0 +1,93 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+main {
+    overflow-y: scroll;
+    max-height: calc(100vh - 84px);
+}
+
+body {
+    background-color: rgb(68, 54, 126);
+}
+
+  #mensagens {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+  }
+
+  #mensagens li {
+    padding: 10px 15px;
+    margin: 10px;
+    max-width: 80%;
+    border-radius: 20px;
+    word-wrap: break-word;
+    clear: both;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .recebida {
+    background-color: rgb(228, 221, 255);
+    align-self: flex-start;
+    text-align: left;
+    border: 1px solid rgb(224, 215, 255);
+  }
+
+  .enviada {
+    background-color: rgb(145, 114, 255);
+    align-self: flex-end;
+    text-align: right;
+    border: 1px solid rgb(138, 106, 255);
+    color: white;
+  }
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 8px;
+    flex-shrink: 0;
+  }
+  .hora {
+    font-size: 0.8em;
+    color: rgb(64, 58, 65);
+    margin-left: 5px;
+  }
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 10px;
+    color: white;
+    background-color: rgb(132, 98, 255);
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(94, 64, 199);
+    background-color: #eee;
+    margin-right: 10px;
+}
+
+button {
+    width: calc(20% - 20px);
+    padding: 10px;
+    background-color: rgb(157, 130, 255);
+    border-style: none;
+    color: white;
+    border-radius: 15px;
+}
