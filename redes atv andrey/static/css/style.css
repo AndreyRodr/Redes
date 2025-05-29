@@ -74,6 +74,33 @@ body {
     margin-left: 5px;
   }
 
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 10px;
+    color: white;
+    background-color: rgb(132, 98, 255);
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(94, 64, 199);
+    background-color: #eee;
+    margin-right: 10px;
+}
+
+button {
+    width: calc(20% - 20px);
+    padding: 10px;
+    background-color: rgb(157, 130, 255);
+    border-style: none;
+    color: white;
+    border-radius: 15px;
+}
+
 /* Smartphone */
 [class*="col-"]{
     float: left;
