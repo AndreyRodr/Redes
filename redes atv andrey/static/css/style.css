@@ -1,18 +1,50 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  #mensagens {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .mensagem {
+    display: flex;
+    align-items: flex-end;
+    margin: 5px;
+  }
+  .enviada {
+    flex-direction: row-reverse;
+    align-self: flex-end;
+  }
+  .recebida {
+    flex-direction: row;
+    align-self: flex-start;
+  }
+  .avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: #6c757d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 8px;
+    flex-shrink: 0;
+  }
+  .bubble {
+    background-color: #f1f0f0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 250px;
+  }
+  .enviada .bubble {
+    background-color: #dcf8c6;
+    text-align: right;
+  }
+  .hora {
+    font-size: 0.8em;
+    color: gray;
+    margin-left: 5px;
+  }
 
 /* Smartphone */
 [class*="col-"]{

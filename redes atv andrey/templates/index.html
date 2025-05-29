@@ -10,29 +10,65 @@
   <h3>Mensagens recebidas:</h3>
   <ul id="mensagens"></ul>
   
-  <div class="enviar"> 
-    <h2>Envie uma mensagem:</h2>
-    <input id="msgInput" placeholder="Digite aqui">
-    <button onclick="enviar()">Enviar</button>
-  </div>
+  <h2>Envie uma mensagem:</h2>
+  <input id="msgInput" placeholder="Digite aqui">
+  <button onclick="enviar()">Enviar</button>
+
   <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
   <script>
-    const socket = io();
-    
-    socket.on('message', (msg) => {
-      const li = document.createElement('li');
-      li.innerText = msg;
-      document.getElementById('mensagens').appendChild(li);
-    });
-    
-    function enviar() {
-      const msg = document.getElementById('msgInput').value;
-      socket.send(msg);
-      document.getElementById('msgInput').value = '';
+   const socket = io();
+
+  const nome = prompt("Digite seu nome:");
+  const clientId = Math.random().toString(36).substring(2, 15);
+
+  function getInitials(nome) {
+    return nome.split(' ').map(n => n[0]).join('').toUpperCase();
+  }
+
+  socket.on('message', (data) => {
+    if (data.id === clientId) return;
+
+    const li = document.createElement('li');
+    li.classList.add('mensagem', 'recebida');
+    li.innerHTML = `
+      <div class="avatar">${getInitials(data.nome)}</div>
+      <div class="bubble">
+        <strong>${data.nome}</strong>: ${data.msg}
+        <span class="hora">${data.hora}</span>
+      </div>
+    `;
+    document.getElementById('mensagens').appendChild(li);
+  });
+
+  function enviar() {
+    const msg = document.getElementById('msgInput').value;
+    if (msg.trim() === '') return;
+
+    const agora = new Date();
+    const hora = agora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const li = document.createElement('li');
+    li.classList.add('mensagem', 'enviada');
+    li.innerHTML = `
+      <div class="avatar">${getInitials(nome)}</div>
+      <div class="bubble">
+        <strong>${nome}</strong>: ${msg}
+        <span class="hora">${hora}</span>
+      </div>
+    `;
+    document.getElementById('mensagens').appendChild(li);
+
+    socket.send({ nome, msg, id: clientId, hora });
+    document.getElementById('msgInput').value = '';
+  }
+
+  window.addEventListener('keydown', (event) => {
+    if (event.key === "Enter") {
+      enviar();
     }
-    
-    // Permite testar via console
-    window.socket = socket;
+
+  window.socket = socket
+  });
   </script>
 </body>
 </html>
